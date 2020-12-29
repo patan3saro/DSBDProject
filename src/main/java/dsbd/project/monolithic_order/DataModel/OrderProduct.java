@@ -47,9 +47,5 @@ public class OrderProduct {
         return this;
     }
 
-    public OrderProduct(Product product, Integer quantity) {
-        this.product = product;
-        this.quantity = quantity;
-    }
 }
 

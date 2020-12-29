@@ -3,12 +3,8 @@ package dsbd.project.monolithic_order.Api;
 import dsbd.project.monolithic_order.DataModel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +15,7 @@ import java.util.Optional;
 public class OrderController {
 
     @Autowired
-    OrderRepository orderRepository;
+    FinalOrderRepository finalOrderRepository;
 
     //Provvisorio: la modificheremo con i microservizi
     @Autowired
@@ -30,24 +26,49 @@ public class OrderController {
     ProductRepository productRepository;
 
     @PostMapping(path="/orders")
-    public @ResponseBody String add(@RequestBody OrderRequest orderRequest, Principal principal){ //Ci serve per ottenere X-User-ID
-        Optional<User> user= userRepository.findById(Integer.parseInt(principal.getName()));
+    public @ResponseBody String add(@RequestBody OrderRequest orderRequest, @RequestHeader("X-User-ID") int userId){ //Ci serve per ottenere X-User-ID
+        Optional<User> user= userRepository.findById(userId);
         //Ciò verrà fatto atomicamente nel service
         if(user.isPresent()) {
             List<OrderProduct> list = new ArrayList<>();
             for(Map.Entry<Integer,Integer> item: orderRequest.getProducts().entrySet()){
                 Product product=productRepository.findByIdAndQuantityGreaterThanEqual(item.getKey(),item.getValue());
-                list.add(new OrderProduct(product, item.getValue()));
-                product.setQuantity(product.getQuantity()- item.getValue());
+                list.add(new OrderProduct()
+                        .setProduct(product)
+                        .setQuantity(item.getValue()));
+                product.setQuantity(product.getQuantity() - item.getValue());
             }
-            Order order= new Order(user.get(),list, orderRequest.getShippingAddress(), orderRequest.getBillingAddress());
-            orderRepository.save(order);
-            return "Order created" + order.toString();
+            FinalOrder order = new FinalOrder();
+            order.setUser(user.get());
+            order.setProducts(list);
+            order.setShippingAddress(orderRequest.getShippingAddress());
+            order.setBillingAddress(orderRequest.getBillingAddress());
+            finalOrderRepository.save(order);
+            return "Order created " + order.toString();
         }
         else
-            return "The user" + principal.getName() + "is not present";
+            return "The user " + userId + " is not present";
 
     }
+
+
+
+    @GetMapping(path="/orders/")
+    public @ResponseBody Iterable<FinalOrder> getAllOrders(@RequestHeader("X-User-ID") int userId){
+        return finalOrderRepository.findAllByUser(userRepository.findById(userId));
+    }
+
+    /* @GetMapping(path="/orders/{id}")
+    public @ResponseBody Optional<FinalOrder> getId(@PathVariable Integer id, @RequestHeader("X-User-ID") int userId){
+
+        return finalOrderRepository.findFinalOrderByIdAndUserIsIn(id, userRepository.findById(userId));
+        /*Integer ownerUserId=*///.getUser().getId();
+
+        /*if(userId==0 || userId==ownerUserId){
+            return finalOrder;
+        }*/
+
+
 
 
 }
