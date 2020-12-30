@@ -2,13 +2,20 @@ package dsbd.project.monolithic_order.Api;
 
 import dsbd.project.monolithic_order.DataModel.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.data.domain.Page;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 @Controller
 @RequestMapping(path="/order")
@@ -51,24 +58,44 @@ public class OrderController {
 
     }
 
+    @GetMapping(path ="/orders", params = {"per_page", "page"})
+    public @ResponseBody Page<FinalOrder> getAllOrders(@RequestHeader("X-User-ID") int userId,
+        @RequestParam("per_page") int per_page, @RequestParam("page") int page){
 
-
-    @GetMapping(path="/orders/")
-    public @ResponseBody Iterable<FinalOrder> getAllOrders(@RequestHeader("X-User-ID") int userId){
-        return finalOrderRepository.findAllByUser(userRepository.findById(userId));
+        Pageable pageWithElements = PageRequest.of(page, per_page);
+        if(userId!=0) {
+            Page<FinalOrder> order = finalOrderRepository.findAllByUser(userRepository.findById(userId), pageWithElements);
+            if(StreamSupport.stream(order.spliterator(), false).count()>0)
+                return order;
+            else
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        else {
+            Page<FinalOrder> order = finalOrderRepository.findAll(pageWithElements); //findAll(pageWithElements);
+            if(StreamSupport.stream(order.spliterator(), false).count()>0)
+                return order;
+            else
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
     }
 
-    /* @GetMapping(path="/orders/{id}")
-    public @ResponseBody Optional<FinalOrder> getId(@PathVariable Integer id, @RequestHeader("X-User-ID") int userId){
-
-        return finalOrderRepository.findFinalOrderByIdAndUserIsIn(id, userRepository.findById(userId));
-        /*Integer ownerUserId=*///.getUser().getId();
-
-        /*if(userId==0 || userId==ownerUserId){
-            return finalOrder;
-        }*/
-
-
+    @GetMapping(path="/orders/{id}")
+    public @ResponseBody Optional<FinalOrder> getId(@PathVariable Integer id, @RequestHeader("X-User-ID") int userId) {
+        if(userId!=0) {
+            Optional<FinalOrder> order = finalOrderRepository.findFinalOrderByIdAndUser(id, userRepository.findById(userId));
+            if(order.isPresent())
+                return order;
+            else
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        else {
+            Optional<FinalOrder> order = finalOrderRepository.findFinalOrderById(id);
+            if(order.isPresent())
+                return order;
+            else
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
 }
