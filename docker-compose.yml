@@ -1,0 +1,35 @@
+version: '3.4'
+
+x-common-variables: &common-variables
+  DATASOURCE_HOST: ${DB_HOST}
+  DATASOURCE_USER: ${DB_USER}
+  DATASOURCE_PASSWORD: ${DB_PASSWORD}
+  DATASOURCE_NAME: ${DB_DATABASE}
+  DATASOURCE_PORT: ${DB_PORT}
+
+services:
+  mysqldb:
+    image: mysql
+    #command: --default-authentication-plugin=mysql_root_password
+    #ports:
+      #- "3306:3306"
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+    volumes:
+      - mystorage:/var/lib/mysql
+
+  monolithic_order:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8085:8085"
+    restart: always
+    environment:
+      <<: *common-variables
+
+volumes:
+  mystorage:
