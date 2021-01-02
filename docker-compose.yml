@@ -1,23 +1,18 @@
-version: '3.4'
-
-x-common-variables: &common-variables
-  DATASOURCE_HOST: ${DB_HOST}
-  DATASOURCE_USER: ${DB_USER}
-  DATASOURCE_PASSWORD: ${DB_PASSWORD}
-  DATASOURCE_NAME: ${DB_DATABASE}
-  DATASOURCE_PORT: ${DB_PORT}
+version: '3'
 
 services:
   mysqldb:
-    image: mysql
-    #command: --default-authentication-plugin=mysql_root_password
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+      # mysql_native_password is the default authentication plugin
+      #used for an account when no authentication plugin is explicitly mentioned
     #ports:
-      #- "3306:3306"
+    #  - "3306:3306"
     environment:
-      - MYSQL_DATABASE=${DB_DATABASE}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ecomm
+      MYSQL_USER: root
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
     volumes:
       - mystorage:/var/lib/mysql
 
@@ -26,10 +21,13 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8085:8085"
+      - "8080:8080"
     restart: always
     environment:
-      <<: *common-variables
+      MYSQL_HOST: mysqldb
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: password
+
   fallback:
     image: debian
     command: sleep 36000

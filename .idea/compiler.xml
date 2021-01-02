@@ -10,11 +10,13 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ecomm_docker" target="1.8" />
       <module name="monolithic_order" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ecomm_docker" options="-parameters" />
       <module name="monolithic_order" options="-parameters" />
     </option>
   </component>

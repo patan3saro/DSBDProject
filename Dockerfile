@@ -3,5 +3,8 @@ WORKDIR /app
 COPY . .
 RUN mvn package
 
+
 ENTRYPOINT ["/bin/sh", "-c"]
-CMD ["java -jar target/monolithic_order-0.0.1-SNAPSHOT.jar"]
+CMD  [ "java -jar target/monolithic_order-0.0.1-SNAPSHOT.jar" ]
+
+
