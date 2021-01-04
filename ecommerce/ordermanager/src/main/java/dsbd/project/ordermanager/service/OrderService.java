@@ -2,8 +2,6 @@ package dsbd.project.ordermanager.service;
 
 import dsbd.project.ordermanager.controller.OrderRequest;
 import dsbd.project.ordermanager.data.FinalOrderRepository;
-import dsbd.project.productmanager.service.ProductService;
-import dsbd.project.usermanager.service.UserService;
 import order.FinalOrder;
 import order.OrderProduct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 import product.Product;
 import user.User;
@@ -30,27 +29,31 @@ public class OrderService {
     @Autowired
     FinalOrderRepository finalOrderRepository;
 
-    @Autowired
-    UserService userService;
+    /*@Autowired
+    UserService userService;*/
 
-    @Autowired
-    ProductService productService;
+    /*@Autowired
+    ProductService productService;*/
+
+    private static String USER_MANAGER_URL="http://usermanager:2222";
+    private static String PRODUCT_MANAGER_URL="http://productmanager:3333";
 
 
     public String add(OrderRequest orderRequest, int userId){ //Ci serve per ottenere X-User-ID
-        Optional<User> user= userService.findById(userId);
-        //Ciò verrà fatto atomicamente nel service
-        if(user.isPresent()) {
+        User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{id}", User.class, userId);
+        if(user!=null) {
             List<OrderProduct> list = new ArrayList<>();
             for(Map.Entry<Integer,Integer> item: orderRequest.getProducts().entrySet()){
-                Product product= productService.findByIdAndQuantityGreaterThanEqual(item.getKey(),item.getValue());
-                list.add(new OrderProduct()
-                        .setProduct(product)
-                        .setQuantity(item.getValue()));
-                product.setQuantity(product.getQuantity() - item.getValue());
+                Product product = new RestTemplate().getForObject(PRODUCT_MANAGER_URL+"/product/id/{id}" , Product.class, item.getKey());
+                if(product.getQuantity()> item.getValue()) {
+                    list.add(new OrderProduct()
+                            .setProduct(product)
+                            .setQuantity(item.getValue()));
+                    product.setQuantity(product.getQuantity() - item.getValue());
+                }
             }
             FinalOrder order = new FinalOrder();
-            order.setUser(user.get());
+            order.setUser(user);
             order.setProducts(list);
             order.setShippingAddress(orderRequest.getShippingAddress());
             order.setBillingAddress(orderRequest.getBillingAddress());
@@ -64,7 +67,8 @@ public class OrderService {
     public Page<FinalOrder> getAllOrders(int userId,int per_page, int page){
         Pageable pageWithElements = PageRequest.of(page, per_page);
         if(userId!=0) {
-            Page<FinalOrder> order = finalOrderRepository.findAllByUser(userService.findById(userId), pageWithElements);
+            User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{id}", User.class, userId);
+            Page<FinalOrder> order = finalOrderRepository.findAllByUser(Optional.ofNullable(user), pageWithElements);
             if(StreamSupport.stream(order.spliterator(), false).count()>0)
                 return order;
             else
@@ -81,7 +85,8 @@ public class OrderService {
 
     public Optional<FinalOrder> getId(Integer id, int userId) {
         if(userId!=0) {
-            Optional<FinalOrder> order = finalOrderRepository.findFinalOrderByIdAndUser(id, userService.findById(userId));
+            User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{id}", User.class, userId);
+            Optional<FinalOrder> order = finalOrderRepository.findFinalOrderByIdAndUser(id, Optional.ofNullable(user));
             if(order.isPresent())
                 return order;
             else

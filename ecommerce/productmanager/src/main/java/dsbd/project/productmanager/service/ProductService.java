@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import product.Product;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -14,7 +15,7 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public Product findByIdAndQuantityGreaterThanEqual(Integer id, Integer quantity){
-        return productRepository.findByIdAndQuantityGreaterThanEqual(id, quantity);
+    public Optional<Product> findById(Integer id){
+        return productRepository.findById(id);
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"order"})
+@EntityScan(basePackages = {"order", "product", "user"})
 public class OrdermanagerApplication {
 
     public static void main(String[] args) {
