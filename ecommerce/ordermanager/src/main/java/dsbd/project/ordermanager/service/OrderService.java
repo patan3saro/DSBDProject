@@ -40,7 +40,7 @@ public class OrderService {
 
 
     public String add(OrderRequest orderRequest, int userId){ //Ci serve per ottenere X-User-ID
-        User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{id}", User.class, userId);
+        User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{userId}", User.class, userId);
         if(user!=null) {
             List<OrderProduct> list = new ArrayList<>();
             for(Map.Entry<Integer,Integer> item: orderRequest.getProducts().entrySet()){
