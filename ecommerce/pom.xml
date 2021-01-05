@@ -11,10 +11,11 @@
     <modules>
         <module>entities</module>
         <module>usermanager</module>
-        <module>ordermanager</module>
         <module>productmanager</module>
-        <module>registrationserver</module>
+        <module>ordermanager</module>
         <module>springgateway</module>
+        <module>registrationserver</module>
     </modules>
+
 
 </project>

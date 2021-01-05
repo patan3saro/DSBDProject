@@ -6,17 +6,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="usermanager" />
-        <module name="productmanager" />
-        <module name="springgateway" />
+        <module name="demo" />
         <module name="ordermanager" />
+        <module name="productmanager" />
         <module name="registrationserver" />
+        <module name="springgateway" />
         <module name="entities" />
+        <module name="usermanager" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="demo" options="-parameters" />
+      <module name="entities" options="" />
       <module name="ordermanager" options="-parameters" />
       <module name="productmanager" options="-parameters" />
       <module name="registrationserver" options="-parameters" />

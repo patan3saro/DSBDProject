@@ -30,15 +30,17 @@ services:
 
   registrationserver:
     build:
-      context: .
+      context: ""
       dockerfile: registrationserver/Dockerfile
     ports:
       - "1111:1111"
     restart: always
+    environment:
+      REGISTRATION_SERVER_PORT: ${REGISTRATION_SERVER_PORT}
 
   springgateway:
     build:
-      context: .
+      context: ""
       dockerfile: springgateway/Dockerfile
     ports:
       - "9999:9999"
@@ -51,7 +53,7 @@ services:
 
   usermanager:
     build:
-      context: .
+      context: ""
       dockerfile: usermanager/Dockerfile
     depends_on:
       - mysqldb
@@ -62,7 +64,7 @@ services:
 
   productmanager:
     build:
-      context: .
+      context: ""
       dockerfile: productmanager/Dockerfile
     depends_on:
       - mysqldb
@@ -73,7 +75,7 @@ services:
 
   ordermanager:
     build:
-      context: .
+      context: ""
       dockerfile: ordermanager/Dockerfile
     depends_on:
       - mysqldb

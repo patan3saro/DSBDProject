@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ab0337dc-6f35-4a9d-9fde-0b59214e56f2" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="ProjectId" id="1kxTX3Pu7G1ftGOJ7D8SDgq9SW3" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1607520615151" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../DSBDProject" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/registrationserver" />
+      <recent name="$PROJECT_DIR$/springgateway" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/ordermanager" />
+      <recent name="$PROJECT_DIR$/productmanager" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../../DSBDProject" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="dsbd2020.lab.ordermanager.data" />
+      <recent name="dsbd2020.lab.productmanager.data" />
+      <recent name="dsbd2020.lab.productmanager.controller" />
+      <recent name="dsbd2020.lab.usermanager.controller" />
+      <recent name="dsbd2020.lab.usermanager.data" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.UsermanagerApplication">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="demo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrdermanagerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ordermanager" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dsbd.project.ordermanager.OrdermanagerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrdermanagerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ordermanager" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dsbd2020.lab.ordermanager.OrdermanagerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductmanagerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="productmanager" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dsbd.project.productmanager.ProductmanagerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProductmanagerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="productmanager" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dsbd2020.lab.productmanager.ProductmanagerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegistrationserverApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="registrationserver" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dsbd.project.registrationserver.RegistrationserverApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RegistrationserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="registrationserver" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dsbd2020.lab.registrationserver.RegistrationserverApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringgatewayApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springgateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dsbd.project.springgateway.SpringgatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringgatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="springgateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dsbd2020.lab.springgateway.SpringgatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsermanagerApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="usermanager" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dsbd.project.usermanager.UsermanagerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsermanagerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="usermanager" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="dsbd2020.lab.usermanager.UsermanagerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="productmanager/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="productmanager/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.productmanager/Dockerfile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab0337dc-6f35-4a9d-9fde-0b59214e56f2" name="Default Changelist" comment="" />
+      <created>1606478125592</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606478125592</updated>
+      <workItem from="1606478132926" duration="11875000" />
+      <workItem from="1606495270654" duration="16814000" />
+      <workItem from="1606520194382" duration="4297000" />
+      <workItem from="1606641280758" duration="22881000" />
+      <workItem from="1606739662440" duration="11421000" />
+      <workItem from="1606837724506" duration="1496000" />
+      <workItem from="1606907196016" duration="2461000" />
+      <workItem from="1606927193918" duration="9106000" />
+      <workItem from="1606992310237" duration="16170000" />
+      <workItem from="1607520280323" duration="621000" />
+      <workItem from="1607534352666" duration="15019000" />
+      <workItem from="1607590384016" duration="3604000" />
+      <workItem from="1609878709405" duration="53000" />
+      <workItem from="1609878796077" duration="6131000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Python 2.7 interpreter library</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>entities</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="" />
+  </component>
+</project>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/registrationserver/registrationserver.iml" filepath="$PROJECT_DIR$/registrationserver/registrationserver.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springgateway/springgateway.iml" filepath="$PROJECT_DIR$/springgateway/springgateway.iml" />
-    </modules>
-  </component>
-</project>
