@@ -13,6 +13,8 @@
         <module>usermanager</module>
         <module>ordermanager</module>
         <module>productmanager</module>
+        <module>registrationserver</module>
+        <module>springgateway</module>
     </modules>
 
 </project>

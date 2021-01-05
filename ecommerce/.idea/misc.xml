@@ -8,6 +8,8 @@
         <option value="$PROJECT_DIR$/ordermanager/pom.xml" />
         <option value="$PROJECT_DIR$/usermanager/pom.xml" />
         <option value="$PROJECT_DIR$/productmanager/pom.xml" />
+        <option value="$PROJECT_DIR$/registrationserver/pom.xml" />
+        <option value="$PROJECT_DIR$/springgateway/pom.xml" />
       </list>
     </option>
   </component>

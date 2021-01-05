@@ -1,5 +1,6 @@
 package dsbd.project.ordermanager.service;
 
+import com.netflix.discovery.EurekaClient;
 import dsbd.project.ordermanager.controller.OrderRequest;
 import dsbd.project.ordermanager.data.FinalOrderRepository;
 import order.FinalOrder;
@@ -29,19 +30,15 @@ public class OrderService {
     @Autowired
     FinalOrderRepository finalOrderRepository;
 
-    /*@Autowired
-    UserService userService;*/
-
-    /*@Autowired
-    ProductService productService;*/
-
-    private static String USER_MANAGER_URL="http://usermanager:2222";
-    private static String PRODUCT_MANAGER_URL="http://productmanager:3333";
+    @Autowired
+    EurekaClient eurekaClient;
 
 
     public String add(OrderRequest orderRequest, int userId){ //Ci serve per ottenere X-User-ID
+        String USER_MANAGER_URL=eurekaClient.getNextServerFromEureka("usermanager",false).getHomePageUrl();
         User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{userId}", User.class, userId);
         if(user!=null) {
+            String PRODUCT_MANAGER_URL=eurekaClient.getNextServerFromEureka("productmanager",false).getHomePageUrl();
             List<OrderProduct> list = new ArrayList<>();
             for(Map.Entry<Integer,Integer> item: orderRequest.getProducts().entrySet()){
                 Product product = new RestTemplate().getForObject(PRODUCT_MANAGER_URL+"/product/id/{id}" , Product.class, item.getKey());
@@ -65,6 +62,7 @@ public class OrderService {
     }
 
     public Page<FinalOrder> getAllOrders(int userId,int per_page, int page){
+        String USER_MANAGER_URL=eurekaClient.getNextServerFromEureka("usermanager",false).getHomePageUrl();
         Pageable pageWithElements = PageRequest.of(page, per_page);
         if(userId!=0) {
             User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{userId}", User.class, userId);
@@ -84,6 +82,7 @@ public class OrderService {
     }
 
     public Optional<FinalOrder> getId(Integer id, int userId) {
+        String USER_MANAGER_URL=eurekaClient.getNextServerFromEureka("usermanager",false).getHomePageUrl();
         if(userId!=0) {
             User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{userId}", User.class, userId);
             Optional<FinalOrder> order = finalOrderRepository.findFinalOrderByIdAndUser(id, Optional.ofNullable(user));

@@ -8,7 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="usermanager" />
         <module name="productmanager" />
+        <module name="springgateway" />
         <module name="ordermanager" />
+        <module name="registrationserver" />
         <module name="entities" />
       </profile>
     </annotationProcessing>
@@ -17,6 +19,8 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ordermanager" options="-parameters" />
       <module name="productmanager" options="-parameters" />
+      <module name="registrationserver" options="-parameters" />
+      <module name="springgateway" options="-parameters" />
       <module name="usermanager" options="-parameters" />
     </option>
   </component>
