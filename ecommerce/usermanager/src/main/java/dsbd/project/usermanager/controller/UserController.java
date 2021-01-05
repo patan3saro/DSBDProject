@@ -18,7 +18,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping(path="/id/{id}")
+    @GetMapping(path="/id/{userId}")
     public @ResponseBody Optional<User> findById(@PathVariable Integer userId){
 
         return userService.findById(userId);
