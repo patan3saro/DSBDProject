@@ -4,7 +4,9 @@
     <file url="file://$PROJECT_DIR$/ordermanager/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/productmanager/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/registrationserver/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/registrationserver/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springgateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springgateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/usermanager/src/main/java" charset="UTF-8" />
   </component>
 </project>
