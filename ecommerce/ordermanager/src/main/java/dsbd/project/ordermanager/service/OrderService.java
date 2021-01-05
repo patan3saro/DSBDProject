@@ -67,7 +67,7 @@ public class OrderService {
     public Page<FinalOrder> getAllOrders(int userId,int per_page, int page){
         Pageable pageWithElements = PageRequest.of(page, per_page);
         if(userId!=0) {
-            User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{id}", User.class, userId);
+            User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{userId}", User.class, userId);
             Page<FinalOrder> order = finalOrderRepository.findAllByUser(Optional.ofNullable(user), pageWithElements);
             if(StreamSupport.stream(order.spliterator(), false).count()>0)
                 return order;
@@ -85,7 +85,7 @@ public class OrderService {
 
     public Optional<FinalOrder> getId(Integer id, int userId) {
         if(userId!=0) {
-            User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{id}", User.class, userId);
+            User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{userId}", User.class, userId);
             Optional<FinalOrder> order = finalOrderRepository.findFinalOrderByIdAndUser(id, Optional.ofNullable(user));
             if(order.isPresent())
                 return order;
