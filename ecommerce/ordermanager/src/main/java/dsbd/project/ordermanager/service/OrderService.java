@@ -1,15 +1,19 @@
 package dsbd.project.ordermanager.service;
 
+import com.google.gson.Gson;
 import com.netflix.discovery.EurekaClient;
 import dsbd.project.ordermanager.controller.OrderRequest;
 import dsbd.project.ordermanager.data.FinalOrderRepository;
+import product.ProductUpdateRequest;
 import order.FinalOrder;
 import order.OrderProduct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
@@ -33,6 +37,15 @@ public class OrderService {
     @Autowired
     EurekaClient eurekaClient;
 
+    @Value("${kafkaTopic}")
+    private String topicName;
+
+    @Autowired      //quello che facilita la pubblicazione sul topic
+    private KafkaTemplate<String, String> kafkaTemplate;
+
+    public void sendMessage(String message){
+        kafkaTemplate.send(topicName, message);
+    }
 
     public String add(OrderRequest orderRequest, int userId){ //Ci serve per ottenere X-User-ID
         String USER_MANAGER_URL=eurekaClient.getNextServerFromEureka("usermanager",false).getHomePageUrl();
@@ -46,7 +59,7 @@ public class OrderService {
                     list.add(new OrderProduct()
                             .setProduct(product)
                             .setQuantity(item.getValue()));
-                    product.setQuantity(product.getQuantity() - item.getValue());
+                    //product.setQuantity(product.getQuantity() - item.getValue());
                 }
             }
             FinalOrder order = new FinalOrder();
@@ -55,6 +68,14 @@ public class OrderService {
             order.setShippingAddress(orderRequest.getShippingAddress());
             order.setBillingAddress(orderRequest.getBillingAddress());
             finalOrderRepository.save(order);
+
+            for(final OrderProduct orderProduct : list){
+                Product prod = orderProduct.getProduct();
+                sendMessage(new Gson().toJson(new ProductUpdateRequest()
+                        .setProductId(prod.getId())
+                        .setProductQuantity(orderProduct.getQuantity())));
+            }
+
             return "Order created " + order.toString();
         }
         else

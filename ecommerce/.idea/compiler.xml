@@ -6,13 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="demo" />
-        <module name="ordermanager" />
-        <module name="productmanager" />
-        <module name="registrationserver" />
-        <module name="springgateway" />
-        <module name="entities" />
         <module name="usermanager" />
+        <module name="springgateway" />
+        <module name="ordermanager" />
+        <module name="registrationserver" />
+        <module name="entities" />
+        <module name="productmanager" />
+        <module name="demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

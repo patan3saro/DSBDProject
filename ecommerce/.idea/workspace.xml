@@ -4,7 +4,22 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab0337dc-6f35-4a9d-9fde-0b59214e56f2" name="Default Changelist" comment="" />
+    <list default="true" id="ab0337dc-6f35-4a9d-9fde-0b59214e56f2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entities/src/main/java/product/ProductUpdateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/kafka/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/kafka/KafkaConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/kafka/KafkaConsumerProducts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ordermanager/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ordermanager/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productmanager/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/productmanager/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productmanager/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/productmanager/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,13 +28,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1kxTX3Pu7G1ftGOJ7D8SDgq9SW3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -27,13 +46,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1607520615151" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../DSBDProject" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/Università/Laurea Magistrale in Ingegneria Informatica/Lezioni/2° anno/I semestre/Distributed Systems and Big Data/Slides lezioni/Esercitazioni/6. ecommmicroservices_kafka/ecommmicroservices" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -51,7 +71,7 @@
       <recent name="$PROJECT_DIR$/productmanager" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/../../DSBDProject" />
+      <recent name="$PROJECT_DIR$/.." />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="dsbd2020.lab.ordermanager.data" />
@@ -69,15 +89,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.UsermanagerApplication">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -198,11 +216,26 @@
       <workItem from="1607590384016" duration="3604000" />
       <workItem from="1609878709405" duration="53000" />
       <workItem from="1609878796077" duration="6131000" />
+      <workItem from="1609885867169" duration="872000" />
+      <workItem from="1609940342189" duration="140000" />
+      <workItem from="1609940685738" duration="6874000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="masterDetails">
     <states>
