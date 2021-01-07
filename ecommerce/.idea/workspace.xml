@@ -28,6 +28,22 @@
       <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/heartbeat/HeartBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/heartbeat/HeartBeat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springgateway/src/main/java/dsbd/project/springgateway/SpringgatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/springgateway/src/main/java/dsbd/project/springgateway/SpringgatewayApplication.java" afterDir="false" />
+
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entities/src/main/java/product/ProductUpdateRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/kafka/KafkaProducerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/kafka/KafkaConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/kafka/KafkaConsumerProducts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ordermanager/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ordermanager/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productmanager/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/productmanager/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productmanager/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/productmanager/src/main/resources/application.properties" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +82,7 @@
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/Università/Laurea Magistrale in Ingegneria Informatica/Lezioni/2° anno/I semestre/Distributed Systems and Big Data/Slides lezioni/Esercitazioni/6. ecommmicroservices_kafka/ecommmicroservices" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -102,6 +118,17 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.UsermanagerApplication">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="heartbeatmanager" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
@@ -227,12 +254,16 @@
       <workItem from="1609878796077" duration="6131000" />
       <workItem from="1609885867169" duration="872000" />
       <workItem from="1609940342189" duration="140000" />
+<<<<<<< HEAD
       <workItem from="1609940685738" duration="9935000" />
       <workItem from="1610008792705" duration="17838000" />
       <workItem from="1610039486280" duration="1015000" />
       <workItem from="1610040708436" duration="495000" />
       <workItem from="1610041313848" duration="2642000" />
       <workItem from="1610044182247" duration="2961000" />
+=======
+      <workItem from="1609940685738" duration="6874000" />
+>>>>>>> f682b34ec0d6dda483a59681259efcd367c9f89a
     </task>
     <servers />
   </component>
