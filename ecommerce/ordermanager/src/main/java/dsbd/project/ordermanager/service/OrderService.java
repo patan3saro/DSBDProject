@@ -59,7 +59,6 @@ public class OrderService {
                     list.add(new OrderProduct()
                             .setProduct(product)
                             .setQuantity(item.getValue()));
-                    //product.setQuantity(product.getQuantity() - item.getValue());
                 }
             }
             FinalOrder order = new FinalOrder();
