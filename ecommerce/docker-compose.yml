@@ -11,6 +11,8 @@ x-common-variables: &common-variables
   ORDER_MANAGER_PORT: ${ORDER_MANAGER_PORT}
   PRODUCT_MANAGER_PORT: ${PRODUCT_MANAGER_PORT}
   USER_MANAGER_PORT: ${USER_MANAGER_PORT}
+  HEARTBEAT_MANAGER_PORT: ${HEARTBEAT_MANAGER_PORT}
+  HEARTBEAT_TIMEOUT: ${HEARTBEAT_TIMEOUT}
 
 
 services:
@@ -96,6 +98,16 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zookeper:2181
     depends_on:
       - zookeper
+
+  heartbeatmanager:
+    build:
+      context: ""
+      dockerfile: heartbeatmanager/Dockerfile
+    depends_on:
+      - registrationserver
+    restart: always
+    environment:
+      <<: *common-variables
 
 volumes:
   mystorage:

@@ -15,6 +15,7 @@
         <module>ordermanager</module>
         <module>springgateway</module>
         <module>registrationserver</module>
+        <module>heartbeatmanager</module>
     </modules>
 
 

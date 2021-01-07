@@ -20,7 +20,8 @@ public class SpringgatewayApplication {
         return builder.routes()
                 .route(p -> p.path("/user/**").uri("http://usermanager:2222"))
                 .route(p -> p.path("/product/**").uri("http://productmanager:3333"))
-                .route(p -> p.path("/order/**").uri("http://ordermanager:4444")).build();
+                .route(p -> p.path("/order/**").uri("http://ordermanager:4444"))
+                .route(p -> p.path("/ping/**").uri("http://heartbeatmanager:8888")).build();
     }
 
 }

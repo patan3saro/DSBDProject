@@ -12,17 +12,14 @@
         <module name="registrationserver" />
         <module name="entities" />
         <module name="productmanager" />
-        <module name="demo" />
+        <module name="heartbeatmanager" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="demo" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="demo" options="-parameters" />
       <module name="entities" options="" />
+      <module name="heartbeatmanager" options="-parameters" />
       <module name="ordermanager" options="-parameters" />
       <module name="productmanager" options="-parameters" />
       <module name="registrationserver" options="-parameters" />

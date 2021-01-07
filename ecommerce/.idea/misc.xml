@@ -13,6 +13,8 @@
         <option value="$PROJECT_DIR$/ordermanager/pom.xml" />
         <option value="$PROJECT_DIR$/registrationserver/pom.xml" />
         <option value="$PROJECT_DIR$/springgateway/pom.xml" />
+        <option value="$PROJECT_DIR$/demo/pom.xml" />
+        <option value="$PROJECT_DIR$/heartbeatmanager/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
