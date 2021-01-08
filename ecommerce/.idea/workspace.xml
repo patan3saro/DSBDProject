@@ -28,7 +28,6 @@
       <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/heartbeat/HeartBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/heartbeat/HeartBeat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/springgateway/src/main/java/dsbd/project/springgateway/SpringgatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/springgateway/src/main/java/dsbd/project/springgateway/SpringgatewayApplication.java" afterDir="false" />
-
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/entities/src/main/java/product/ProductUpdateRequest.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/kafka/KafkaProducerConfig.java" afterDir="false" />
@@ -43,7 +42,6 @@
       <change beforePath="$PROJECT_DIR$/productmanager/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/productmanager/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/service/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/productmanager/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/productmanager/src/main/resources/application.properties" afterDir="false" />
-
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,17 +116,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.UsermanagerApplication">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="heartbeatmanager" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
@@ -254,16 +241,13 @@
       <workItem from="1609878796077" duration="6131000" />
       <workItem from="1609885867169" duration="872000" />
       <workItem from="1609940342189" duration="140000" />
-<<<<<<< HEAD
       <workItem from="1609940685738" duration="9935000" />
       <workItem from="1610008792705" duration="17838000" />
       <workItem from="1610039486280" duration="1015000" />
       <workItem from="1610040708436" duration="495000" />
       <workItem from="1610041313848" duration="2642000" />
       <workItem from="1610044182247" duration="2961000" />
-=======
       <workItem from="1609940685738" duration="6874000" />
->>>>>>> f682b34ec0d6dda483a59681259efcd367c9f89a
     </task>
     <servers />
   </component>
