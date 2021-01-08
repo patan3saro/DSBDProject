@@ -1,7 +1,6 @@
 package dsbd.project.productmanager.kafka;
 
 import com.google.gson.Gson;
-import dsbd.project.productmanager.data.ProductRepository;
 import dsbd.project.productmanager.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;

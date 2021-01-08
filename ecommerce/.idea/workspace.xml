@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab0337dc-6f35-4a9d-9fde-0b59214e56f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/entities/src/main/java/order/OrderCompletedNotify.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/entities/src/main/java/order/OrderValidationNotify.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/kafka/KafkaConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/kafka/KafkaConsumerOrders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entities/src/main/java/order/FinalOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/entities/src/main/java/order/FinalOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/heartbeat/HeartBeat.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/heartbeat/HeartBeat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/kafka/KafkaProducerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/kafka/KafkaProducerConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ordermanager/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/springgateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/springgateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/kafka/KafkaConsumerProducts.java" beforeDir="false" afterPath="$PROJECT_DIR$/productmanager/src/main/java/dsbd/project/productmanager/kafka/KafkaConsumerProducts.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,15 +85,13 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.UsermanagerApplication">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -233,6 +229,7 @@
       <workItem from="1610044182247" duration="2961000" />
       <workItem from="1609940685738" duration="6874000" />
       <workItem from="1610094152259" duration="1358000" />
+      <workItem from="1610101756650" duration="6188000" />
     </task>
     <servers />
   </component>
