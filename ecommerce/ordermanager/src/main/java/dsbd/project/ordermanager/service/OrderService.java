@@ -151,4 +151,8 @@ public class OrderService {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
+
+    public FinalOrder updateOrder(FinalOrder finalOrder){
+        return finalOrderRepository.save(finalOrder);
+    }
 }

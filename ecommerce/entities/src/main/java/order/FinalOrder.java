@@ -28,6 +28,7 @@ public class FinalOrder {
 
     private String status;
 
+
     @Transient
     public Double getTotalPrice(){
         double total=0.0;
@@ -76,6 +77,14 @@ public class FinalOrder {
 
     public void setBillingAddress(String billingAddress) {
         this.billingAddress = billingAddress;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
