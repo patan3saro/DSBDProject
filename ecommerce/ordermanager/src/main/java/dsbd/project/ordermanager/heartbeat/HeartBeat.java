@@ -9,7 +9,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ public class HeartBeat {
 
     private ArrayList<String> serviceToTest;
 
-    @Scheduled(fixedDelayString = "${heartBeatTimeout}") //
+    @Scheduled(fixedDelayString = "${heartBeatTimeout}")
     public void heartbeat() {
         //Services that we want to ping with heartbeat
         serviceToTest =  new ArrayList<>();

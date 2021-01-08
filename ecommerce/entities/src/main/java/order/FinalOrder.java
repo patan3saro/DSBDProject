@@ -26,6 +26,8 @@ public class FinalOrder {
     @NotNull(message="The field cannot be empty")
     private String billingAddress;
 
+    private String status;
+
     @Transient
     public Double getTotalPrice(){
         double total=0.0;

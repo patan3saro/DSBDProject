@@ -23,6 +23,12 @@ public class KafkaProducerConfig {
     @Value("${kafkaTopic}")
     private String topicName;
 
+    @Value("${ordersTopic}")
+    private String ordersTopic;
+
+    @Value("${notificationsTopic}")
+    private String notificationsTopic;
+
     @Bean
     public Map<String, Object> producerConfigs(){
         Map<String, Object> props = new HashMap<>();
@@ -42,6 +48,12 @@ public class KafkaProducerConfig {
     public NewTopic topic1(){
         return TopicBuilder.name(topicName).build();
     }
+
+    @Bean
+    public NewTopic topic2() { return TopicBuilder.name(ordersTopic).build(); }
+
+    @Bean
+    public NewTopic topic3() { return TopicBuilder.name(notificationsTopic).build(); }
 
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate() {

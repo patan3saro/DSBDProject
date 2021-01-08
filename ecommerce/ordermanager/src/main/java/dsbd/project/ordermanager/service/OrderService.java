@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.netflix.discovery.EurekaClient;
 import dsbd.project.ordermanager.controller.OrderRequest;
 import dsbd.project.ordermanager.data.FinalOrderRepository;
+import order.OrderCompletedNotify;
 import product.ProductUpdateRequest;
 import order.FinalOrder;
 import order.OrderProduct;
@@ -40,11 +41,24 @@ public class OrderService {
     @Value("${kafkaTopic}")
     private String topicName;
 
+    @Value("${kafkaTopicKey}")
+    private String kafkaTopicKey;
+
+    @Value("${ordersTopic}")
+    private String ordersTopic;
+
+    @Value("${notificationsTopic}")
+    private String notificationsTopic;
+
+    @Value("${ordersAndNotificationsKey}")
+    private String ordersAndNotificationsKey;
+
+
     @Autowired      //quello che facilita la pubblicazione sul topic
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void sendMessage(String message){
-        kafkaTemplate.send(topicName, message);
+    public void sendMessage(String topic, String key, String message){
+        kafkaTemplate.send(topic, key, message);
     }
 
     public String add(OrderRequest orderRequest, int userId){ //Ci serve per ottenere X-User-ID
@@ -66,14 +80,32 @@ public class OrderService {
             order.setProducts(list);
             order.setShippingAddress(orderRequest.getShippingAddress());
             order.setBillingAddress(orderRequest.getBillingAddress());
-            finalOrderRepository.save(order);
+            FinalOrder orderCreated = finalOrderRepository.save(order);
 
             for(final OrderProduct orderProduct : list){
                 Product prod = orderProduct.getProduct();
-                sendMessage(new Gson().toJson(new ProductUpdateRequest()
+                sendMessage(topicName, kafkaTopicKey, new Gson().toJson(new ProductUpdateRequest()
                         .setProductId(prod.getId())
                         .setProductQuantity(orderProduct.getQuantity())));
             }
+
+            sendMessage(ordersTopic, ordersAndNotificationsKey, new Gson().toJson(new OrderCompletedNotify()
+                    .setOrderId(orderCreated.getId())
+                    .setProducts(orderRequest.getProducts())
+                    .setTotal(orderCreated.getTotalPrice())
+                    .setShippingAddress(orderCreated.getShippingAddress())
+                    .setBillingAddress(orderCreated.getBillingAddress())
+                    .setUserId(orderCreated.getUser().getId())
+                    .setExtraArgs("")));
+
+            sendMessage(notificationsTopic, ordersAndNotificationsKey, new Gson().toJson(new OrderCompletedNotify()
+                    .setOrderId(orderCreated.getId())
+                    .setProducts(orderRequest.getProducts())
+                    .setTotal(orderCreated.getTotalPrice())
+                    .setShippingAddress(orderCreated.getShippingAddress())
+                    .setBillingAddress(orderCreated.getBillingAddress())
+                    .setUserId(orderCreated.getUser().getId())
+                    .setExtraArgs("")));
 
             return "Order created " + order.toString();
         }
