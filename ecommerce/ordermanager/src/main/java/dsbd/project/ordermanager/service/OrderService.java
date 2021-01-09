@@ -155,4 +155,10 @@ public class OrderService {
     public FinalOrder updateOrder(FinalOrder finalOrder){
         return finalOrderRepository.save(finalOrder);
     }
+
+
+    public Optional<FinalOrder> getOrder(Integer orderId){
+        return finalOrderRepository.findById(orderId);
+    }
+
 }

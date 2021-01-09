@@ -13,7 +13,7 @@ public class Product {
     private Integer id;
 
     @NotNull
-    private Double price;
+    private double price;
 
     @NotNull
     private Integer quantity;
@@ -27,11 +27,11 @@ public class Product {
         return this;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public Product setPrice(Double price) {
+    public Product setPrice(double price) {
         this.price = price;
         return this;
     }

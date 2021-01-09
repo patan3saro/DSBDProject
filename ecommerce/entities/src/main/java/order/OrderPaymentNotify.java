@@ -1,5 +1,7 @@
 package order;
 
+import java.util.Map;
+
 public class OrderPaymentNotify {
 
     private Integer orderId;
@@ -8,7 +10,7 @@ public class OrderPaymentNotify {
 
     private double amountPaid;
 
-    private String extraArgs;
+    private Map<String,String> extraArgs;
 
     public Integer getOrderId() {
         return orderId;
@@ -37,11 +39,11 @@ public class OrderPaymentNotify {
         return this;
     }
 
-    public String getExtraArgs() {
+    public Map<String, String> getExtraArgs() {
         return extraArgs;
     }
 
-    public OrderPaymentNotify setExtraArgs(String extraArgs) {
+    public OrderPaymentNotify setExtraArgs(Map<String, String> extraArgs) {
         this.extraArgs = extraArgs;
         return this;
     }

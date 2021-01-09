@@ -29,6 +29,12 @@ public class KafkaProducerConfig {
     @Value("${notificationsTopic}")
     private String notificationsTopic;
 
+    @Value("${loggingTopic}")
+    private String loggingTopic;
+
+    @Value("${invoicingTopic}")
+    private String invoicingTopic;
+
     @Bean
     public Map<String, Object> producerConfigs(){
         Map<String, Object> props = new HashMap<>();
@@ -54,6 +60,12 @@ public class KafkaProducerConfig {
 
     @Bean
     public NewTopic topic3() { return TopicBuilder.name(notificationsTopic).build(); }
+
+    @Bean
+    public NewTopic topic4() { return TopicBuilder.name(invoicingTopic).build(); }
+
+    @Bean
+    public NewTopic topic5() { return TopicBuilder.name(loggingTopic).build(); }
 
     @Bean
     public KafkaTemplate<String, String> kafkaTemplate() {

@@ -17,7 +17,7 @@ public class FinalOrder {
     @ManyToOne  //più ordini ad un utente
     private User user;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
     private List<OrderProduct> products;
 
     @NotNull(message="The field cannot be empty")
@@ -29,8 +29,8 @@ public class FinalOrder {
     private String status;
 
 
-    @Transient
-    public Double getTotalPrice(){
+   @Transient
+    public double getTotalPrice(){
         double total=0.0;
         for (OrderProduct iteratedProduct: products){
             total+=iteratedProduct.getAggregatedPrice();
@@ -90,11 +90,12 @@ public class FinalOrder {
     @Override
     public String toString() {
         return "FinalOrder{" +
-                "id:" + id +
-                ", user:" + user +
-                ", products:" + products +
-                ", shippingAddress:'" + shippingAddress + '\'' +
-                ", billingAddress:'" + billingAddress + '\'' +
+                "id=" + id +
+                ", user=" + user +
+                ", products=" + products +
+                ", shippingAddress='" + shippingAddress + '\'' +
+                ", billingAddress='" + billingAddress + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

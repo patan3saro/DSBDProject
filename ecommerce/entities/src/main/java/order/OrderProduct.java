@@ -18,7 +18,7 @@ public class OrderProduct {
     private Integer quantity;
 
     @Transient
-    public Double getAggregatedPrice(){
+    public double getAggregatedPrice(){
         return quantity*product.getPrice();
     }
 
