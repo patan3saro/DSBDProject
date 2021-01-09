@@ -38,11 +38,9 @@ public class OrderService {
     @Autowired
     EurekaClient eurekaClient;
 
+    //topic names
     @Value("${kafkaTopic}")
     private String topicName;
-
-    @Value("${kafkaTopicKey}")
-    private String kafkaTopicKey;
 
     @Value("${ordersTopic}")
     private String ordersTopic;
@@ -50,11 +48,18 @@ public class OrderService {
     @Value("${notificationsTopic}")
     private String notificationsTopic;
 
+    //topic keys
+    @Value("${kafkaTopicKey}")
+    private String kafkaTopicKey;
+
+    @Value("${ordersAndNotificationsKey}")
+    private String ordersAndNotificationsKey;
+
     @Value("${ordersAndNotificationsKey}")
     private String ordersAndNotificationsKey;
 
 
-    @Autowired      //quello che facilita la pubblicazione sul topic
+    @Autowired//questa classe facilita la pubblicazione sul topic
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(String topic, String key, String message){
