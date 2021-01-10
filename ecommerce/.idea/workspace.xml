@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ab0337dc-6f35-4a9d-9fde-0b59214e56f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/entities/src/main/java/order/OrderHttpErrorNotify.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/ClientException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/ServerException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ordermanager/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/resources/application.properties" afterDir="false" />
     </list>
     <list id="f86b0e52-2d24-4b09-8b0d-085fb1b45a80" name="Changes by Utente" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +39,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -233,6 +238,8 @@
       <workItem from="1610179466524" duration="29728000" />
       <workItem from="1610214910243" duration="656000" />
       <workItem from="1610218960324" duration="1400000" />
+      <workItem from="1610278772745" duration="6294000" />
+      <workItem from="1610285761592" duration="335000" />
     </task>
     <servers />
   </component>
