@@ -37,9 +37,6 @@ public class KafkaConsumerOrders {
     @Value("${notificationsTopic}")
     private String notificationsTopic;
 
-    public void sendMessage(String topic, String key, String message){
-        kafkaTemplate.send(topic, key, message);
-    }
 
     @KafkaListener(topics = "${ordersTopic}", groupId = "${kafkaGroup}")
     public void listenOrderTopic(ConsumerRecord<String, String> record){
@@ -70,12 +67,12 @@ public class KafkaConsumerOrders {
                         HashMap myValues = new HashMap<>();
                         myValues.put("error", "WRONG_AMOUNT_PAID");
                         orderPaymentNotify.setExtraArgs(myValues);
-                        sendMessage(loggingTopic, orderPaidFailureKey, new Gson().toJson(orderPaymentNotify));
+                        orderService.sendMessage(loggingTopic, orderPaidFailureKey, new Gson().toJson(orderPaymentNotify));
                     } else {
                         foundFinalOrder.setStatus("Paid");
                         orderService.updateOrder(foundFinalOrder);
-                        sendMessage(notificationsTopic, key, record.value());
-                        sendMessage(invoicingTopic, key, record.value());
+                        orderService.sendMessage(notificationsTopic, key, record.value());
+                        orderService.sendMessage(invoicingTopic, key, record.value());
                     }
                 }
                 else {
@@ -85,7 +82,7 @@ public class KafkaConsumerOrders {
                     HashMap myValues = new HashMap<>();
                     myValues.put("error", "ORDER_NOT_FOUND");
                     orderPaymentNotify.setExtraArgs(myValues);
-                    sendMessage(loggingTopic, orderPaidFailureKey, new Gson().toJson(orderPaymentNotify));
+                    orderService.sendMessage(loggingTopic, orderPaidFailureKey, new Gson().toJson(orderPaymentNotify));
                 }
             }
             else {
@@ -93,7 +90,7 @@ public class KafkaConsumerOrders {
                 HashMap myValues = new HashMap<>();
                 myValues.put("error", "ORDER_NOT_FOUND");
                 orderPaymentNotify.setExtraArgs(myValues);
-                sendMessage(loggingTopic, orderPaidFailureKey, new Gson().toJson(orderPaymentNotify));
+                orderService.sendMessage(loggingTopic, orderPaidFailureKey, new Gson().toJson(orderPaymentNotify));
             }
         }
     }

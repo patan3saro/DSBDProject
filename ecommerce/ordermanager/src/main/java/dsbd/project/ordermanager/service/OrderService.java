@@ -21,6 +21,7 @@ import org.springframework.web.server.ResponseStatusException;
 import product.Product;
 import user.User;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +89,6 @@ public class OrderService {
                         .setProductId(prod.getId())
                         .setProductQuantity(orderProduct.getQuantity())));
             }
-
             sendMessage(ordersTopic, ordersAndNotificationsKey, new Gson().toJson(new OrderCompletedNotify()
                     .setOrderId(orderCreated.getId())
                     .setProducts(orderRequest.getProducts())
@@ -110,7 +110,7 @@ public class OrderService {
             return "Order created " + order.toString();
         }
         else
-            return "The user " + userId + " is not present";
+            return null;
     }
 
     public Page<FinalOrder> getAllOrders(int userId,int per_page, int page){
@@ -122,14 +122,14 @@ public class OrderService {
             if(StreamSupport.stream(order.spliterator(), false).count()>0)
                 return order;
             else
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                return null;
         }
         else {
             Page<FinalOrder> order = finalOrderRepository.findAll(pageWithElements); //findAll(pageWithElements);
             if(StreamSupport.stream(order.spliterator(), false).count()>0)
                 return order;
             else
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                return null;
         }
     }
 
@@ -141,14 +141,14 @@ public class OrderService {
             if(order.isPresent())
                 return order;
             else
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                return null;
         }
         else {
             Optional<FinalOrder> order = finalOrderRepository.findFinalOrderById(id);
             if(order.isPresent())
                 return order;
             else
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+                return null;
         }
     }
 

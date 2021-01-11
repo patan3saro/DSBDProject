@@ -91,7 +91,7 @@ public class FinalOrder {
     public String toString() {
         return "FinalOrder{" +
                 "id=" + id +
-                ", user=" + user +
+                ", user=" + user.getId() +
                 ", products=" + products +
                 ", shippingAddress='" + shippingAddress + '\'' +
                 ", billingAddress='" + billingAddress + '\'' +
