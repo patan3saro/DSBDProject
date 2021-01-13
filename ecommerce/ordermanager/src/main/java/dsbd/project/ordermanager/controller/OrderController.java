@@ -27,15 +27,13 @@ public class OrderController {
     @GetMapping(path ="/orders", params = {"per_page", "page"})
     public @ResponseBody Page<FinalOrder> getAllOrders(@RequestHeader("X-User-ID") int userId,
                                                        @RequestParam("per_page") int per_page,
-                                                       @RequestParam("page") int page)
-    {
+                                                       @RequestParam("page") int page) throws NoSuchFieldException {
         return orderService.getAllOrders(userId, per_page, page);
     }
 
     @GetMapping(path="/orders/{id}")
     public @ResponseBody Optional<FinalOrder> getId(@PathVariable Integer id,
-                                                    @RequestHeader("X-User-ID") int userId)
-    {
+                                                    @RequestHeader("X-User-ID") int userId) throws NoSuchFieldException {
         return orderService.getId(id, userId);
     }
 

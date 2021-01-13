@@ -13,20 +13,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.server.ResponseStatusException;
 import product.Product;
 import user.User;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -113,7 +107,7 @@ public class OrderService {
             return null;
     }
 
-    public Page<FinalOrder> getAllOrders(int userId,int per_page, int page){
+    public Page<FinalOrder> getAllOrders(int userId,int per_page, int page) throws NoSuchFieldException {
         String USER_MANAGER_URL=eurekaClient.getNextServerFromEureka("usermanager",false).getHomePageUrl();
         Pageable pageWithElements = PageRequest.of(page, per_page);
         if(userId!=0) {
@@ -122,18 +116,18 @@ public class OrderService {
             if(StreamSupport.stream(order.spliterator(), false).count()>0)
                 return order;
             else
-                return null;
+                throw new NoSuchFieldException();
         }
         else {
             Page<FinalOrder> order = finalOrderRepository.findAll(pageWithElements); //findAll(pageWithElements);
             if(StreamSupport.stream(order.spliterator(), false).count()>0)
                 return order;
             else
-                return null;
+                throw new NoSuchFieldException();
         }
     }
 
-    public Optional<FinalOrder> getId(Integer id, int userId) {
+    public Optional<FinalOrder> getId(Integer id, int userId) throws NoSuchFieldException {
         String USER_MANAGER_URL=eurekaClient.getNextServerFromEureka("usermanager",false).getHomePageUrl();
         if(userId!=0) {
             User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{userId}", User.class, userId);
@@ -141,14 +135,14 @@ public class OrderService {
             if(order.isPresent())
                 return order;
             else
-                return null;
+                throw new NoSuchFieldException();
         }
         else {
             Optional<FinalOrder> order = finalOrderRepository.findFinalOrderById(id);
             if(order.isPresent())
                 return order;
             else
-                return null;
+                throw new NoSuchFieldException();
         }
     }
 
