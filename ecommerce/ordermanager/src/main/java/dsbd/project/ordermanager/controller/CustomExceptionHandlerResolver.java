@@ -2,7 +2,7 @@ package dsbd.project.ordermanager.controller;
 
 import com.google.gson.Gson;
 import dsbd.project.ordermanager.service.OrderService;
-import order.OrderHttpErrorNotify;
+import dsbd.project.ordermanager.notificationclasses.OrderHttpErrorNotify;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,19 +34,24 @@ import java.net.BindException;
 import java.time.Instant;
 
 @Component
+// this annotation allows our class to recognize global exceptions in our application
 @ControllerAdvice
+// this annotation allows us to obtain different levels of precedence for a class
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CustomExceptionHandlerResolver {
 
     @Autowired
     OrderService orderService;
-
+    //topics
     @Value("${loggingTopic}")
     private String loggingTopic;
 
     @Value("${httpErrorsTopicKey}")
     private String httpErrorsTopicKey;
 
+    //the exceptions have been divided according to the code they generate
+
+    //client exceptions
     //400   BAD REQUEST
     @ExceptionHandler(value = {
             BindException.class,
@@ -57,6 +62,7 @@ public class CustomExceptionHandlerResolver {
             TypeMismatchException.class,
             MissingRequestHeaderException.class})
     protected void handleBadRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //we need to set our servlet response with desired code in order to show the error body to the client
         response.sendError(HttpServletResponse.SC_BAD_REQUEST);
         clientErrorHandler(request, response.getStatus());
     }
@@ -90,7 +96,7 @@ public class CustomExceptionHandlerResolver {
         response.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE);
         clientErrorHandler(request, response.getStatus());
     }
-
+    //server exceptions
     //500   INTERNAL SERVER ERROR
     @ExceptionHandler(value = {
             IllegalArgumentException.class,
@@ -109,8 +115,10 @@ public class CustomExceptionHandlerResolver {
         response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
         serverErrorHandler(request, e);
     }
-
+    // generic client function in wich we construct the body of the message
+    // to send in kafka logging topic
     private void clientErrorHandler(HttpServletRequest req, Integer errorCode) {
+        //getting unix time
         long unixTime = Instant.now().getEpochSecond();
         Instant instant = Instant.ofEpochSecond(unixTime);
         String sourceIp = req.getRemoteAddr();
@@ -125,7 +133,8 @@ public class CustomExceptionHandlerResolver {
                 .setRequest(request)
                 .setError(error)));
     }
-
+    //this function is like the previous one function, but with a difference:
+    // the error field has the stack trace
     private void serverErrorHandler(HttpServletRequest req, Exception e){
         long unixTime = Instant.now().getEpochSecond();
         Instant instant = Instant.ofEpochSecond(unixTime);

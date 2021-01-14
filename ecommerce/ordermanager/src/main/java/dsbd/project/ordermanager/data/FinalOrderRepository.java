@@ -9,7 +9,6 @@ import user.User;
 import java.util.Optional;
 
 public interface FinalOrderRepository extends PagingAndSortingRepository<FinalOrder, Integer> {
-    //public Iterable<FinalOrder> findAllByUser(Optional<User> user, Pageable pageable);
 
     public Page<FinalOrder> findAllByUser(Optional<User> user, Pageable pageable);
 

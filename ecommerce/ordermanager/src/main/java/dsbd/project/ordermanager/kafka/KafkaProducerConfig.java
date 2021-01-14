@@ -20,6 +20,7 @@ public class KafkaProducerConfig {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
 
+    //topics
     @Value("${kafkaTopic}")
     private String topicName;
 
@@ -46,14 +47,12 @@ public class KafkaProducerConfig {
 
     @Bean
     public ProducerFactory<String, String> producerFactory(){
-        //imposta una singleton dell'istanza condivisa di Product
+        // this set a singleton of the shared instance of Product
         return new DefaultKafkaProducerFactory<>(producerConfigs());
     }
-
-    @Bean   //un bean per ogni topic che vogliamo
-    public NewTopic topic1(){
-        return TopicBuilder.name(topicName).build();
-    }
+    // a bean for each topic we want
+    @Bean
+    public NewTopic topic1(){ return TopicBuilder.name(topicName).build(); }
 
     @Bean
     public NewTopic topic2() { return TopicBuilder.name(ordersTopic).build(); }

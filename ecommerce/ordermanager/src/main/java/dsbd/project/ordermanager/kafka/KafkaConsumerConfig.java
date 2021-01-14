@@ -17,13 +17,13 @@ public class KafkaConsumerConfig {
 
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServers;
-
+    //topics
     @Value("${ordersTopic}")
     private String ordersTopic;
-
+    //topic group
     @Value("${kafkaGroup}")
     private String consumerGroup;
-
+    //configuration parameters of the consumer
     @Bean
     public Map<String, Object> consumerConfigs() {
         Map<String, Object> props = new HashMap<>();

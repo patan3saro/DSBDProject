@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
-//Per abilitare il registration server come eureka server
+//In order to enable registration server as eureka server
 @EnableEurekaServer
 public class RegistrationserverApplication {
 

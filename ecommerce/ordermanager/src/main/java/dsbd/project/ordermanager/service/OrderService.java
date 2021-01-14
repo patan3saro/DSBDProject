@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.netflix.discovery.EurekaClient;
 import dsbd.project.ordermanager.controller.OrderRequest;
 import dsbd.project.ordermanager.data.FinalOrderRepository;
-import order.OrderCompletedNotify;
+import dsbd.project.ordermanager.notificationclasses.OrderCompletedNotify;
 import product.ProductUpdateRequest;
 import order.FinalOrder;
 import order.OrderProduct;
@@ -32,31 +32,31 @@ public class OrderService {
 
     @Autowired
     EurekaClient eurekaClient;
-
+    //topics
     @Value("${kafkaTopic}")
     private String topicName;
-
-    @Value("${kafkaTopicKey}")
-    private String kafkaTopicKey;
 
     @Value("${ordersTopic}")
     private String ordersTopic;
 
     @Value("${notificationsTopic}")
     private String notificationsTopic;
-
+    //topic keys
     @Value("${ordersAndNotificationsKey}")
     private String ordersAndNotificationsKey;
 
+    @Value("${kafkaTopicKey}")
+    private String kafkaTopicKey;
 
-    @Autowired      //quello che facilita la pubblicazione sul topic
+    //this KafkaTemplate simplifies posting to the topic
+    @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
     public void sendMessage(String topic, String key, String message){
         kafkaTemplate.send(topic, key, message);
     }
 
-    public String add(OrderRequest orderRequest, int userId){ //Ci serve per ottenere X-User-ID
+    public String add(OrderRequest orderRequest, int userId){ //we need this to obtain X-User-ID
         String USER_MANAGER_URL=eurekaClient.getNextServerFromEureka("usermanager",false).getHomePageUrl();
         User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{userId}", User.class, userId);
         if(user!=null) {
@@ -119,7 +119,7 @@ public class OrderService {
                 throw new NoSuchFieldException();
         }
         else {
-            Page<FinalOrder> order = finalOrderRepository.findAll(pageWithElements); //findAll(pageWithElements);
+            Page<FinalOrder> order = finalOrderRepository.findAll(pageWithElements);
             if(StreamSupport.stream(order.spliterator(), false).count()>0)
                 return order;
             else

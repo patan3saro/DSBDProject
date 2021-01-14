@@ -1,4 +1,4 @@
-package order;
+package dsbd.project.ordermanager.notificationclasses;
 
 public class OrderHttpErrorNotify {
 
@@ -11,6 +11,8 @@ public class OrderHttpErrorNotify {
     private String request;
 
     private String error;
+
+    //getters and setters
 
     public String getTimestamp() {
         return timestamp;

@@ -1,8 +1,7 @@
-package order;
+package dsbd.project.ordermanager.notificationclasses;
 
 import java.io.Serializable;
 import java.util.Map;
-
 
 public class OrderCompletedNotify implements Serializable {
 
@@ -19,6 +18,8 @@ public class OrderCompletedNotify implements Serializable {
     private Integer userId;
 
     private String extraArgs;
+
+    //getters and setters
 
     public Integer getOrderId() {
         return orderId;

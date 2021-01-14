@@ -11,7 +11,7 @@ public class HeartBeatController {
 
     @Autowired
     HeartBeatService heartBeatService;
-
+    // this controller is useful only in order to test /ping request
     @PostMapping(path="/ping")
     public @ResponseBody String ping(@RequestBody HeartBeatRequest heartBeatRequest)
     {

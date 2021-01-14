@@ -14,6 +14,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 
 @Configuration
+//This annotation allows the class content to be specifically scheduled
+// by Spring to execute periodically
 @EnableScheduling
 public class HeartBeat {
 
@@ -21,7 +23,7 @@ public class HeartBeat {
     EurekaClient eurekaClient;
 
     private ArrayList<String> serviceToTest;
-
+    //we specify the scheduling interval with a global variable in file app.properties->.env
     @Scheduled(fixedDelayString = "${heartBeatTimeout}")
     public void heartbeat() {
         //Services that we want to ping with heartbeat

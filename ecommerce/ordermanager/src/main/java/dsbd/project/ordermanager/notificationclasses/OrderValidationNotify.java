@@ -1,4 +1,4 @@
-package order;
+package dsbd.project.ordermanager.notificationclasses;
 
 public class OrderValidationNotify {
 
@@ -9,6 +9,8 @@ public class OrderValidationNotify {
     private Integer orderId;
 
     private String extraArgs;
+
+    //getters and setters
 
     public String getTimestamp() {
         return timestamp;

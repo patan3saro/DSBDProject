@@ -3,16 +3,20 @@ package dsbd.project.ordermanager.controller;
 
 import javax.validation.constraints.NotNull;
 import java.util.Map;
-
+//this class allows us to map the client request in order to manage its infos
 public class OrderRequest {
+    //Binding fields
+    //Set of products to order
     @NotNull
-    private Map<Integer,Integer> products;//Insieme di products di cui effettuare l'ordine
+    private Map<Integer,Integer> products;
 
     @NotNull
     private String shippingAddress;
 
     @NotNull
     private String billingAddress;
+
+    //getters and setters
 
     public Map<Integer, Integer> getProducts() {
         return products;

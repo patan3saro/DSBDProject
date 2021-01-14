@@ -1,4 +1,4 @@
-package order;
+package dsbd.project.ordermanager.notificationclasses;
 
 import java.util.Map;
 
@@ -11,6 +11,8 @@ public class OrderPaymentNotify {
     private double amountPaid;
 
     private Map<String,String> extraArgs;
+
+    //getters and setters
 
     public Integer getOrderId() {
         return orderId;
