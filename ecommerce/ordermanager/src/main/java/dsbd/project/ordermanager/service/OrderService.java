@@ -5,6 +5,8 @@ import com.netflix.discovery.EurekaClient;
 import dsbd.project.ordermanager.controller.OrderRequest;
 import dsbd.project.ordermanager.data.FinalOrderRepository;
 import dsbd.project.ordermanager.notificationclasses.OrderCompletedNotify;
+import org.springframework.web.HttpMediaTypeNotAcceptableException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import product.ProductUpdateRequest;
 import order.FinalOrder;
 import order.OrderProduct;
@@ -20,6 +22,7 @@ import product.Product;
 import user.User;
 
 import javax.transaction.Transactional;
+import java.net.BindException;
 import java.util.*;
 import java.util.stream.StreamSupport;
 
@@ -56,7 +59,8 @@ public class OrderService {
         kafkaTemplate.send(topic, key, message);
     }
 
-    public String add(OrderRequest orderRequest, int userId){ //we need this to obtain X-User-ID
+    public String add(OrderRequest orderRequest, int userId) throws BindException, NoSuchFieldException { //we need this to obtain X-User-ID
+        boolean check = true;
         String USER_MANAGER_URL=eurekaClient.getNextServerFromEureka("usermanager",false).getHomePageUrl();
         User user = new RestTemplate().getForObject(USER_MANAGER_URL + "/user/id/{userId}", User.class, userId);
         if(user!=null) {
@@ -64,47 +68,53 @@ public class OrderService {
             List<OrderProduct> list = new ArrayList<>();
             for(Map.Entry<Integer,Integer> item: orderRequest.getProducts().entrySet()){
                 Product product = new RestTemplate().getForObject(PRODUCT_MANAGER_URL+"/product/id/{id}" , Product.class, item.getKey());
-                if(product.getQuantity()> item.getValue()) {
+                if(product.getQuantity() >= item.getValue() && item.getValue()>0) {
                     list.add(new OrderProduct()
                             .setProduct(product)
                             .setQuantity(item.getValue()));
                 }
+                else
+                    check = false;
             }
-            FinalOrder order = new FinalOrder();
-            order.setUser(user);
-            order.setProducts(list);
-            order.setShippingAddress(orderRequest.getShippingAddress());
-            order.setBillingAddress(orderRequest.getBillingAddress());
-            FinalOrder orderCreated = finalOrderRepository.save(order);
+            if(check) {
+                FinalOrder order = new FinalOrder();
+                order.setUser(user);
+                order.setProducts(list);
+                order.setShippingAddress(orderRequest.getShippingAddress());
+                order.setBillingAddress(orderRequest.getBillingAddress());
+                FinalOrder orderCreated = finalOrderRepository.save(order);
 
-            for(final OrderProduct orderProduct : list){
-                Product prod = orderProduct.getProduct();
-                sendMessage(topicName, kafkaTopicKey, new Gson().toJson(new ProductUpdateRequest()
-                        .setProductId(prod.getId())
-                        .setProductQuantity(orderProduct.getQuantity())));
+                for (final OrderProduct orderProduct : list) {
+                    Product prod = orderProduct.getProduct();
+                    sendMessage(topicName, kafkaTopicKey, new Gson().toJson(new ProductUpdateRequest()
+                            .setProductId(prod.getId())
+                            .setProductQuantity(orderProduct.getQuantity())));
+                }
+                sendMessage(ordersTopic, ordersAndNotificationsKey, new Gson().toJson(new OrderCompletedNotify()
+                        .setOrderId(orderCreated.getId())
+                        .setProducts(orderRequest.getProducts())
+                        .setTotal(orderCreated.getTotalPrice())
+                        .setShippingAddress(orderCreated.getShippingAddress())
+                        .setBillingAddress(orderCreated.getBillingAddress())
+                        .setUserId(orderCreated.getUser().getId())
+                        .setExtraArgs("")));
+
+                sendMessage(notificationsTopic, ordersAndNotificationsKey, new Gson().toJson(new OrderCompletedNotify()
+                        .setOrderId(orderCreated.getId())
+                        .setProducts(orderRequest.getProducts())
+                        .setTotal(orderCreated.getTotalPrice())
+                        .setShippingAddress(orderCreated.getShippingAddress())
+                        .setBillingAddress(orderCreated.getBillingAddress())
+                        .setUserId(orderCreated.getUser().getId())
+                        .setExtraArgs("")));
+
+                return "Order created " + order.toString();
             }
-            sendMessage(ordersTopic, ordersAndNotificationsKey, new Gson().toJson(new OrderCompletedNotify()
-                    .setOrderId(orderCreated.getId())
-                    .setProducts(orderRequest.getProducts())
-                    .setTotal(orderCreated.getTotalPrice())
-                    .setShippingAddress(orderCreated.getShippingAddress())
-                    .setBillingAddress(orderCreated.getBillingAddress())
-                    .setUserId(orderCreated.getUser().getId())
-                    .setExtraArgs("")));
-
-            sendMessage(notificationsTopic, ordersAndNotificationsKey, new Gson().toJson(new OrderCompletedNotify()
-                    .setOrderId(orderCreated.getId())
-                    .setProducts(orderRequest.getProducts())
-                    .setTotal(orderCreated.getTotalPrice())
-                    .setShippingAddress(orderCreated.getShippingAddress())
-                    .setBillingAddress(orderCreated.getBillingAddress())
-                    .setUserId(orderCreated.getUser().getId())
-                    .setExtraArgs("")));
-
-            return "Order created " + order.toString();
+            else
+                throw new BindException();
         }
         else
-            return null;
+            throw new NoSuchFieldException();
     }
 
     public Page<FinalOrder> getAllOrders(int userId,int per_page, int page) throws NoSuchFieldException {

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.BindException;
 import java.util.Optional;
 //we split the controller and the body of this one
 //in controlle and service
@@ -20,7 +21,7 @@ public class OrderController {
     @PostMapping(path="/orders")
     public @ResponseBody String add(@RequestBody OrderRequest orderRequest,
                                     //we need this annotation in order to obtain X-User-ID
-                                    @RequestHeader("X-User-ID") int userId)
+                                    @RequestHeader("X-User-ID") int userId) throws BindException, NoSuchFieldException
     {
         return orderService.add(orderRequest, userId);
     }
