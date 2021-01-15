@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ab0337dc-6f35-4a9d-9fde-0b59214e56f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ordermanager/src/main/java/dsbd/project/ordermanager/service/OrderService.java" afterDir="false" />
     </list>
     <list id="f86b0e52-2d24-4b09-8b0d-085fb1b45a80" name="Changes by Utente" comment="" />
@@ -83,19 +82,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.UsermanagerApplication">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="heartbeatmanager" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
@@ -241,6 +227,7 @@
       <workItem from="1610533096968" duration="472000" />
       <workItem from="1610539832132" duration="668000" />
       <workItem from="1610613049258" duration="5580000" />
+      <workItem from="1610699521508" duration="4932000" />
     </task>
     <servers />
   </component>

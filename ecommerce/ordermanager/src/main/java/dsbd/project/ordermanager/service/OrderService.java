@@ -68,7 +68,7 @@ public class OrderService {
             List<OrderProduct> list = new ArrayList<>();
             for(Map.Entry<Integer,Integer> item: orderRequest.getProducts().entrySet()){
                 Product product = new RestTemplate().getForObject(PRODUCT_MANAGER_URL+"/product/id/{id}" , Product.class, item.getKey());
-                if(product.getQuantity() >= item.getValue() && item.getValue()>0) {
+                if(product != null && product.getQuantity() >= item.getValue() && item.getValue()>0) {
                     list.add(new OrderProduct()
                             .setProduct(product)
                             .setQuantity(item.getValue()));
